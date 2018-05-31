@@ -1,2 +1,2 @@
 # CalcIO
-Basic Ionic calculator
+Ionic based non-scientific calculator made with Regular Expressions
