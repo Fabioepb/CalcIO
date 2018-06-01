@@ -25678,31 +25678,6 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
-page-home .button {
-  height: 95%;
-  font-size: 6vw;
-}
-
-page-home #Operacion {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  font-size: 50px;
-  color: white;
-  width: 100%;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-page-home .contenido {
-  background-color: black;
-}
-
 page-home ion-grid {
   height: 90%;
   margin-top: 9vh;
@@ -25710,4 +25685,30 @@ page-home ion-grid {
 
 page-home ion-grid ion-row {
   height: 25%;
+}
+
+page-home ion-grid ion-scroll {
+  white-space: nowrap;
+}
+
+page-home .button {
+  height: 95%;
+  font-size: 6vw;
+}
+
+page-home .content {
+  background-color: black;
+}
+
+page-home #operation {
+  display: inline-block;
+  font-size: 50px;
+  text-align: end;
+  color: white;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-left: 5px;
+  margin-right: 5px;
 }

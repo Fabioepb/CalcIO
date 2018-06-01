@@ -1,29 +1,32 @@
 page-home {
-    .button{
-        height: 95%;
-        font-size: 6vw;
-    }
-
-    #Operacion{
-        display: flex;
-        justify-content: flex-end;
-        font-size: 50px;
-        //background-color: rgb(105, 105, 105);
-        color: rgb(255, 255, 255);
-        width: 100%;
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-    
-    .contenido{
-        background-color: black;
-    }
     ion-grid {
         height: 90%;
         margin-top: 9vh;
         
         ion-row {
-          height: 25%;         
+            height: 25%;
         }
-      }
+        ion-scroll {
+            white-space: nowrap;
+        }
+    }
+    .button{
+        height: 95%;
+        font-size: 6vw;
+    }
+    .content {
+        background-color: black;
+    }
+    #operation {
+        display: inline-block;
+        font-size: 50px;
+        text-align: end;
+        color: rgb(255, 255, 255);
+        width: 100%;
+        white-space: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 }
