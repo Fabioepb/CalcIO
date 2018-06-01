@@ -6,66 +6,46 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  operacion: string;
+  operation: string;
   num1: number;
   num2: number;
-  Regexp: any;
-  op: string;
-  resultado:any;
+  regExp: any;
+  sign: string;
+  result:any;
 
   constructor(public navCtrl: NavController) {
-    this.operacion ="";
-    this.resultado = "";
-    this.Regexp = /([0-9]+(\+|\-|\*|\/)?)+$/;
+    this.operation ="";
+    this.result = "";
+    this.regExp = /([0-9]+(\+|\-|\*|\/)?)+$/;
   }
 
-  addnum(num: string){
-      this.operacion += num;
+  addNum(num: string){
+      this.operation += num;
   }
 
-  addop(oper: string){
-      this.operacion += oper;
-      this.op = oper;
+  addSign(oper: string){
+      this.operation += oper;
+      this.sign = oper;
   }
 
-  processop(){
-     if(this.Regexp.test(this.operacion)){
-        this.resultado = eval(this.operacion);
-        this.operacion = this.resultado;
-     }else{
-       this.operacion = "Math Error";
+  processOp(){
+     try {
+       if (this.regExp.test(this.operation)) {
+         this.result = eval(this.operation);
+         this.operation = this.result;
+       } else {
+         this.operation = "Math Error";
+       }
+     } catch(error) {
+       this.operation = "Missing arguments"
      }
-/*     switch (this.op) {
-      case "+":
-        this.num1 = parseFloat(this.operacion.split(this.op)[0]);
-        this.num2 = parseFloat(this.operacion.split(this.op)[1]);
-        this.resultado = this.num1 + this.num2;
-        break;
-      case "-":
-        this.num1 = parseFloat(this.operacion.split(this.op)[0]);
-        this.num2 = parseFloat(this.operacion.split(this.op)[1]);
-        this.resultado = this.num1 - this.num2;
-        break;
-      case "/":
-        this.num1 = parseFloat(this.operacion.split(this.op)[0]);
-        this.num2 = parseFloat(this.operacion.split(this.op)[1]);
-        this.resultado = this.num1 / this.num2;
-        break;
-      case "x":
-        this.num1 = parseFloat(this.operacion.split(this.op)[0]);
-        this.num2 = parseFloat(this.operacion.split(this.op)[1]);
-        this.resultado = this.num1 * this.num2;
-        break;
-      default:
-        break; 
-    }*/
   }
 
-  clearop(){
-    this.operacion = "";
+  clearOp(){
+    this.operation = "";
   }
 
-  returnresult(){
-    this.operacion = this.resultado;
+  getResult(){
+    this.operation = this.result;
   }
 }

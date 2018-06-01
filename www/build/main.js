@@ -55,58 +55,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var HomePage = /** @class */ (function () {
     function HomePage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.operacion = "";
-        this.Regexp = /([0-9]+(\+|\-|\*|\/)?)+$/;
+        this.operation = "";
+        this.result = "";
+        this.regExp = /([0-9]+(\+|\-|\*|\/)?)+$/;
     }
-    HomePage.prototype.addnum = function (num) {
-        this.operacion += num;
+    HomePage.prototype.addNum = function (num) {
+        this.operation += num;
     };
-    HomePage.prototype.addop = function (oper) {
-        this.operacion += oper;
-        this.op = oper;
+    HomePage.prototype.addSign = function (oper) {
+        this.operation += oper;
+        this.sign = oper;
     };
-    HomePage.prototype.processop = function () {
-        if (this.Regexp.test(this.operacion)) {
-            this.resultado = eval(this.operacion);
-            this.operacion = this.resultado;
+    HomePage.prototype.processOp = function () {
+        try {
+            if (this.regExp.test(this.operation)) {
+                this.result = eval(this.operation);
+                this.operation = this.result;
+            }
+            else {
+                this.operation = "Math Error";
+            }
         }
-        else {
-            this.operacion = "Esa verga ta mala";
+        catch (error) {
+            this.operation = "Missing arguments";
         }
-        /*     switch (this.op) {
-              case "+":
-                this.num1 = parseFloat(this.operacion.split(this.op)[0]);
-                this.num2 = parseFloat(this.operacion.split(this.op)[1]);
-                this.resultado = this.num1 + this.num2;
-                break;
-              case "-":
-                this.num1 = parseFloat(this.operacion.split(this.op)[0]);
-                this.num2 = parseFloat(this.operacion.split(this.op)[1]);
-                this.resultado = this.num1 - this.num2;
-                break;
-              case "/":
-                this.num1 = parseFloat(this.operacion.split(this.op)[0]);
-                this.num2 = parseFloat(this.operacion.split(this.op)[1]);
-                this.resultado = this.num1 / this.num2;
-                break;
-              case "x":
-                this.num1 = parseFloat(this.operacion.split(this.op)[0]);
-                this.num2 = parseFloat(this.operacion.split(this.op)[1]);
-                this.resultado = this.num1 * this.num2;
-                break;
-              default:
-                break;
-            }*/
     };
-    HomePage.prototype.clearop = function () {
-        this.operacion = "";
+    HomePage.prototype.clearOp = function () {
+        this.operation = "";
     };
-    HomePage.prototype.returnresult = function () {
-        this.operacion = this.resultado;
+    HomePage.prototype.getResult = function () {
+        this.operation = this.result;
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\Fabio\Desktop\IONIC\calculator\src\pages\home\home.html"*/'<ion-content>\n  <ion-grid no-padding>\n      <ion-row>\n        <h1 padding name="operacion">{{operacion}}</h1>\n      </ion-row>\n      <ion-row>\n          <ion-col col-6>\n            <button ion-button color="light" block (click)="clearop();">CLEAR</button>\n          </ion-col>\n          <ion-col col-3>\n            <button ion-button color="light" block (click)="returnresult();">RETURN</button>\n          </ion-col>\n          <ion-col col-3>\n            <button ion-button color="secondary" block (click)="addop(\'/\');">/</button>\n          </ion-col>\n      </ion-row>\n    \n    <ion-row>\n      <ion-col >\n        <button ion-button block (click)="addnum(\'7\');">7</button>\n      </ion-col>\n      <ion-col >\n        <button ion-button block (click)="addnum(\'8\');">8</button>\n      </ion-col>\n      <ion-col >\n        <button ion-button block (click)="addnum(\'9\');">9</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="secondary" block (click)="addop(\'x\');">x</button>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col>\n        <button ion-button block (click)="addnum(\'4\');">4</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button block (click)="addnum(\'5\');">5</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button block (click)="addnum(\'6\');">6</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="secondary" block (click)="addop(\'-\');">-</button>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col>\n        <button ion-button block (click)="addnum(\'1\');">1</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button block (click)="addnum(\'2\');">2</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button block (click)="addnum(\'3\');">3</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="secondary" block (click)="addop(\'+\');">+</button>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col col-6>\n        <button ion-button block (click)="addnum(\'0\');">0</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button block (click)="addnum(\'.\');">.</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="light" block (click)="processop();">ENTER</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"C:\Users\Fabio\Desktop\IONIC\calculator\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\jc\Documents\Mobile\Calculator-ionic\src\pages\home\home.html"*/'<ion-content class="contenido">\n\n  <ion-grid no-padding>\n\n    <ion-row>\n\n      <div id="Operacion" padding>{{operation}}</div>\n\n    </ion-row>\n\n    <ion-row>\n\n        <ion-col col-6>\n\n          <button ion-button color="light" block (click)="clearOp();">CLEAR</button>\n\n        </ion-col>\n\n        <ion-col col-3>\n\n          <button ion-button color="light" block (click)="getResult();">BACK</button>\n\n        </ion-col>\n\n        <ion-col col-3>\n\n          <button ion-button color="secondary" block (click)="addSign(\'/\');">/</button>\n\n        </ion-col>\n\n  </ion-row>\n\n    \n\n    <ion-row>\n\n      <ion-col >\n\n        <button ion-button block (click)="addNum(\'7\');">7</button>\n\n      </ion-col>\n\n      <ion-col >\n\n        <button ion-button block (click)="addNum(\'8\');">8</button>\n\n      </ion-col>\n\n      <ion-col >\n\n        <button ion-button block (click)="addNum(\'9\');">9</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button color="secondary" block (click)="addSign(\'*\');">x</button>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n    <ion-row>\n\n      <ion-col>\n\n        <button ion-button block (click)="addNum(\'4\');">4</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button block (click)="addNum(\'5\');">5</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button block (click)="addNum(\'6\');">6</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button color="secondary" block (click)="addSign(\'-\');">-</button>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n    <ion-row>\n\n      <ion-col>\n\n        <button ion-button block (click)="addNum(\'1\');">1</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button block (click)="addNum(\'2\');">2</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button block (click)="addNum(\'3\');">3</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button color="secondary" block (click)="addSign(\'+\');">+</button>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n    <ion-row>\n\n      <ion-col col-6>\n\n        <button ion-button block (click)="addNum(\'0\');">0</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button block (click)="addNum(\'.\');">.</button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button color="light" block (click)="processOp();">=</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\jc\Documents\Mobile\Calculator-ionic\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
     ], HomePage);
@@ -226,7 +208,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Fabio\Desktop\IONIC\calculator\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\Fabio\Desktop\IONIC\calculator\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\jc\Documents\Mobile\Calculator-ionic\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\jc\Documents\Mobile\Calculator-ionic\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
