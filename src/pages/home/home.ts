@@ -15,6 +15,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
     this.operacion ="";
+    this.resultado = "";
     this.Regexp = /([0-9]+(\+|\-|\*|\/)?)+$/;
   }
 
@@ -32,7 +33,7 @@ export class HomePage {
         this.resultado = eval(this.operacion);
         this.operacion = this.resultado;
      }else{
-       this.operacion = "Esa verga ta mala";
+       this.operacion = "Math Error";
      }
 /*     switch (this.op) {
       case "+":
