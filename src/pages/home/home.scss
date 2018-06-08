@@ -1,7 +1,7 @@
 page-home {
     ion-grid {
         height: 90%;
-        margin-top: 9vh;
+        margin-top: 6vh;
         
         ion-row {
             height: 25%;
@@ -15,6 +15,7 @@ page-home {
         font-size: 6vw;
     }
     .content {
+        max-height: 100%;
         background-color: black;
     }
     #operation {

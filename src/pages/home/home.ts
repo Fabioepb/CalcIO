@@ -7,8 +7,6 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
   operation: string;
-  num1: number;
-  num2: number;
   regExp: any;
   sign: string;
   result:any;
@@ -20,7 +18,11 @@ export class HomePage {
   }
 
   addNum(num: string){
-      this.operation += num;
+      if(this.operation == "Math Error") {
+        this.operation = '';
+        this.operation += num;
+      } else
+        this.operation += num;
   }
 
   addSign(oper: string){
@@ -37,7 +39,7 @@ export class HomePage {
          this.operation = "Math Error";
        }
      } catch(error) {
-       this.operation = "Missing arguments"
+       this.operation = "Math Error"
      }
   }
 

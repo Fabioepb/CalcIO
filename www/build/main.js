@@ -60,7 +60,12 @@ var HomePage = /** @class */ (function () {
         this.regExp = /([0-9]+(\+|\-|\*|\/)?)+$/;
     }
     HomePage.prototype.addNum = function (num) {
-        this.operation += num;
+        if (this.operation == "Math Error") {
+            this.operation = '';
+            this.operation += num;
+        }
+        else
+            this.operation += num;
     };
     HomePage.prototype.addSign = function (oper) {
         this.operation += oper;
@@ -77,7 +82,7 @@ var HomePage = /** @class */ (function () {
             }
         }
         catch (error) {
-            this.operation = "Missing arguments";
+            this.operation = "Math Error";
         }
     };
     HomePage.prototype.clearOp = function () {
